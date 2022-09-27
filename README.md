@@ -107,6 +107,7 @@ Execution result must be succeeded, and you will see something like on screensho
 ### Create an API Gateway to your function
 Let's create an access point to the `Lambda function` created above and additionally set protection against unwanted launches using the `API Key`
 
+#### Create API
 Go to the `AWS API Gateway service`. Click on the `Create API` button, set the name of the API.
 <details>
 <summary>Create API</summary>
@@ -116,6 +117,7 @@ Go to the `AWS API Gateway service`. Click on the `Create API` button, set the n
 
 </details>
 
+#### Create method
 We add the GET method to the newly created API. To do this, select Actions --> Create method, in the drop-down list that appears, select the GET method and click on the checkmark
 <details>
 <summary>Create method</summary>
@@ -125,6 +127,7 @@ We add the GET method to the newly created API. To do this, select Actions --> C
 
 </details>
 
+#### Link lambda function
 Next, we indicate that our `Lambda function` will be used in the `GET` method. Select it and click on the `Save` button.
 <details>
 <summary>Link lambda function</summary>
@@ -133,7 +136,7 @@ Next, we indicate that our `Lambda function` will be used in the `GET` method. S
 
 </details>
 
-###### Deploy function
+#### Deploy function
 Let's deploy our `API`, thereby obtaining a `URL` to call the `API`.
 Click `Actions` --> `Deploy API`, and then Deployment stage --> `New Stage`.
 <details>
@@ -146,6 +149,7 @@ Click `Actions` --> `Deploy API`, and then Deployment stage --> `New Stage`.
 
 > It is possible to deploy the `API` to different stages and call these stages whatever you like (for example, DEV/QA/PROD). We will deploy immediately to `PROD`
 
+#### URL Query String Parameters
 Add support for request parameters to the `API`
 
 Go to the GET request settings and go to the Method Request step
@@ -180,6 +184,8 @@ We return to the `Method Execution` page and go to the `Integration Request`. We
 
 </details>
 
+
+#### Protecting API
 It remains only to protect our `API` from unwanted attacks from the outside.
 
 To do this, you need to configure the `API` in such a way that, when accessed, it requires a `secret key`, which is passed in the `header`.
@@ -228,6 +234,7 @@ On the next page, we bind `API Keys` to the `API usage plan`. Click on the `Add 
 
 </details>
 
+#### Test your function
 [Deploy](#deploy-function) your `function` and test it with `Postman`
 
 <details>
